@@ -66,29 +66,27 @@ def extract_packet(packet, acc, start, end):
   # operator
   else:
     len_type_id = cur_packet[6]
+    vals = []
     if int(len_type_id) == 0:
       tot_len = int('0b' + cur_packet[7:22], base=2)
 
       # parse current package
       packet_start = start + 22
       packet_end = start + 22 + tot_len
-      vals = []
       while packet_start != packet_end:
         packet_start, v = extract_packet(packet, acc, packet_start, packet_end)
         vals.append(v)
-      res = perform_op(type_id, vals)
-      return packet_end, res
     else:
       num_of_packets = int('0b' + cur_packet[7:18], base=2)
 
       # parse current package
-      vals = []
       packet_start = start + 18
       for i in range(num_of_packets):
         packet_start, v = extract_packet(packet, acc, packet_start, len(packet))
         vals.append(v)
-      res = perform_op(type_id, vals)
-      return packet_start, res
+
+    res = perform_op(type_id, vals)
+    return packet_start, res
 
 a = [0]
 res = extract_packet(packet, a, 0, len(packet))[1]
