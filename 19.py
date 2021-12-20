@@ -95,6 +95,7 @@ while len(matched) < len(scanners):
               x = [e[0] + pot_pos[0], e[1] + pot_pos[1], e[2] + pot_pos[2]]
               na.append(x)
             matched.append(na)
+            print(pot_pos)
             unmatched[j] = None
             break
         if flag:
