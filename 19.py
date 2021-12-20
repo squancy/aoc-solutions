@@ -96,7 +96,6 @@ while len(matched) < len(scanners):
               na.append(x)
             matched.append(na)
             unmatched[j] = None
-            print(scanner_pos)
             break
         if flag:
           break
