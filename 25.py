@@ -53,10 +53,5 @@ changed = True
 steps = 0
 while changed:
   arr, changed = simulate_step(arr)
-  """
-  for row in arr:
-    print(''.join(row))
-  print()
-  """
   steps += 1
-print(steps)
+print('First part:', steps)
