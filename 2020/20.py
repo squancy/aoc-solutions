@@ -22,10 +22,6 @@ def rotate(tile):
 def flip(tile):
   return [x[::-1] for x in tile]
 
-def pretty_print(tile):
-  for row in tile:
-    print(row)
-
 def generate_orientations(tile):
   os = []
   tc = tile
