@@ -1,3 +1,5 @@
+# uses fast exponentiation but still pretty slow
+
 pk1, pk2 = [int(x.rstrip()) for x in open('inp25.txt').readlines()]
 
 def first_part(pk1, pk2):
