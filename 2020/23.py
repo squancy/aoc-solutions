@@ -16,6 +16,8 @@ def first_part(cups):
   minval = min(cups)
   maxval = max(cups)
   for i in range(100):
+    print(cups)
+    print()
     tcups = three_cups(cups, current_cup) 
     destination_cup = current_cup - 1
     while not destination_cup in cups or destination_cup in tcups:
@@ -31,6 +33,8 @@ def first_part(cups):
   return ''.join([str(x) for x in cups[oneind + 1:] + cups[:oneind]])
 
 def second_part(cups):
-  
+  cups = [int(x) for x in '952316487'] + list(range(6, 10**2 + 1))  
+  first_part(cups)
 
-print('First part:', first_part(cups))
+#print('First part:', first_part(cups))
+second_part(None)
