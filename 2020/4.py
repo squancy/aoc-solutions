@@ -83,7 +83,3 @@ for passport in passports:
     cnt += 1
 
 print('Second part', cnt)
-        
-        
-        
-  
