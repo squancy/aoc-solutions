@@ -16,8 +16,6 @@ def first_part(cups):
   minval = min(cups)
   maxval = max(cups)
   for i in range(100):
-    print(cups)
-    print()
     tcups = three_cups(cups, current_cup) 
     destination_cup = current_cup - 1
     while not destination_cup in cups or destination_cup in tcups:
@@ -33,8 +31,36 @@ def first_part(cups):
   return ''.join([str(x) for x in cups[oneind + 1:] + cups[:oneind]])
 
 def second_part(cups):
-  cups = [int(x) for x in '952316487'] + list(range(6, 10**2 + 1))  
-  first_part(cups)
+  d = {}
+  for i in range(len(cups)):
+    if i < len(cups) - 1:
+      d[cups[i]] = cups[i + 1]
+    else:
+      d[cups[i]] = max(cups) + 1
+  
+  for i in range(max(cups) + 1, 10 ** 6 + 1):
+    if i == 10 ** 6:
+      d[i] = cups[0]
+    else:
+      d[i] = i + 1
 
-#print('First part:', first_part(cups))
-second_part(None)
+  ccup = cups[0]
+  minval = min(d.keys())
+  maxval = max(d.keys())
+  for i in range(10 ** 7):
+    tcups = [d[ccup], d[d[ccup]], d[d[d[ccup]]]]
+    dcup = ccup - 1 
+    while not dcup in d or dcup in tcups:
+      dcup -= 1
+      if dcup < minval:
+        dcup = maxval 
+    old_nb = d[dcup]
+    onb = d[tcups[2]]
+    d[dcup] = tcups[0]
+    d[tcups[2]] = old_nb
+    d[ccup] = onb
+    ccup = d[ccup]
+  return d[1] * d[d[1]]
+
+print('First part:', first_part(cups))
+print('Second part:', second_part(cups))
