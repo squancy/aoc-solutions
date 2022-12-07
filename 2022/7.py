@@ -1,6 +1,6 @@
 lines = [x.rstrip() for x in open('7.txt').readlines()]
 
-class Tree:
+class Node:
   def __init__(self, typ, size, parent):
     self.typ = typ
     self.size = size
@@ -8,7 +8,7 @@ class Tree:
     self.children = []
 
 def build_tree(lines):
-  root = Tree('d', 0, None)
+  root = Node('d', 0, None)
   current_node = root
   children = []
 
@@ -22,16 +22,16 @@ def build_tree(lines):
         elif cmd[1] == '..':
           current_node = current_node.parent
         else:
-          new_dir = Tree('d', 0, current_node)
+          new_dir = Node('d', 0, current_node)
           current_node.children.append(new_dir)
           current_node = new_dir
       else:
         children = []
     else:
       if line.startswith('dir'):
-        children.append(Tree('d', 0, current_node))
+        children.append(Node('d', 0, current_node))
       else:
-        children.append(Tree('f', int(line.split(' ')[0]), current_node))
+        children.append(Node('f', int(line.split(' ')[0]), current_node))
       if i == len(lines) - 1 or lines[i + 1].startswith('$'):
         current_node.children = children
   return root
