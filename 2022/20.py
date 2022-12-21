@@ -1,7 +1,6 @@
 class Node:
-  def __init__(self, v, orig_pos, prev = None, nx = None):
+  def __init__(self, v, prev = None, nx = None):
     self.v = v
-    self.orig_pos = orig_pos
     self.prev = prev
     self.next = nx
 
@@ -9,7 +8,7 @@ D_KEY = 811589153
 
 def read_nodes(mul):
   f = open('20.txt').readlines()
-  nodes = [Node(int(x.strip()) * mul, i) for i, x in enumerate(f)]
+  nodes = [Node(int(x.strip()) * mul) for i, x in enumerate(f)]
   zero_node = None
   for i, node in enumerate(nodes):
     if node.v == 0: zero_node = node
