@@ -37,26 +37,28 @@ def first_part(jets, rind = 0, jind = 0, r = 2022):
     rind += 1
     fixed_rocks |= cur_rock
 
-    # period = 1725
-    # height of a period = 2709
-    # period start = 2097
-    # remaining to 1 trillion = 270
-    # cycles until it becomes periodic = 1330 
-    # index of rock = 1
-    # pos in jet pattern = 7757
-    """
-    f = True
-    yc = max(y for (x, y) in fixed_rocks)
-    for xc in range(6):
-      if not (xc, yc) in fixed_rocks:
-        f = False
-        break
-    if f:
-      print(yc, jind % len(jets), rind % 5, i)
-    """
   return max(y for (x, y) in fixed_rocks)
 
 def second_part(jets):
+  # period = 1725
+  # height of a period = 2709
+  # period start = 2097
+  # remaining to 1 trillion = 270
+  # cycles until it becomes periodic = 1330 
+  # index of rock = 1
+  # pos in jet pattern = 7757
+
+  """
+  f = True
+  yc = max(y for (x, y) in fixed_rocks)
+  for xc in range(6):
+    if not (xc, yc) in fixed_rocks:
+      f = False
+      break
+  if f:
+    print(yc, jind % len(jets), rind % 5, i)
+  """
+
   x = (1000000000000 - 1330) // 1725
   r = (1000000000000 - 1330) % 1725
   return x * 2709 + 2097 + first_part(jets, 1, 7757, r) - 1
