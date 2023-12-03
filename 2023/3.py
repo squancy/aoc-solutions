@@ -57,10 +57,9 @@ def second_part(nums, inp):
   for gp in gear_pos:
     nums_around = dict()
     for nb in get_nbs(gp):
-      for k, v in nums.items():
-        for sp, ep in v:
-          if nb[0] == k and sp <= nb[1] < ep:
-            nums_around[(sp, ep, k)] = 1
+      for sp, ep in nums[nb[0]]:
+        if sp <= nb[1] < ep:
+          nums_around[(sp, ep, nb[0])] = 1
     if len(nums_around.keys()) == 2:
       prod = 1
       for k in nums_around:
