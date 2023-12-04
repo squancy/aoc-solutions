@@ -2,7 +2,7 @@ def is_special(c):
   return c != '.' and not c.isdigit()
 
 def check(start_pos, end_pos, j, inp):
-  for i in range(start_pos - 1, end_pos + 1):
+  for i in range(max(0, start_pos - 1), min(end_pos + 1, len(inp[0]))):
     try:
       if is_special(inp[j][i]):
         return True
@@ -57,9 +57,10 @@ def second_part(nums, inp):
   for gp in gear_pos:
     nums_around = dict()
     for nb in get_nbs(gp):
-      for sp, ep in nums[nb[0]]:
-        if sp <= nb[1] < ep:
-          nums_around[(sp, ep, nb[0])] = 1
+      if nb[0] in nums:
+        for sp, ep in nums[nb[0]]:
+          if sp <= nb[1] < ep:
+            nums_around[(sp, ep, nb[0])] = 1
     if len(nums_around.keys()) == 2:
       prod = 1
       for k in nums_around:
