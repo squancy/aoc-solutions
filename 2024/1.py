@@ -8,5 +8,5 @@ def first_part():
 def second_part():
     return sum([b.count(x) * x for x in a])
 
-print(first_part())
-print(second_part())
+print("First part:", first_part())
+print("Second part:", second_part())
