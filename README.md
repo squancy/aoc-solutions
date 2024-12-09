@@ -1,4 +1,2 @@
 My solutions to Advent of Code puzzles.<br>
-The code is not the most optimal, these are my original solutions.<br>
-Input files are not included but they can be downloaded from the official website.<br>
-They are referred to as `inp[day number].txt` in the code.
+These are the solutions that first came to my mind and by no means optimized.<br>
